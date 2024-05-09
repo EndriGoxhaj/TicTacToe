@@ -16,7 +16,7 @@ function createUser(name){
         checktie();
     }
     let score = 0;
-    return{name,marker, getScore, giveScore, play}
+    return{name, marker, getScore, giveScore, play}
 };
 player1 = "Devi"
 player2 = "Endri"
@@ -29,12 +29,12 @@ function checktie(){
     }
 }
 function checkwinner(){
-    if (gameBoard[0,1,2] === player1.marker){
+    if (gameBoard[0,1,2] === "x"){
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[0,1,2] === player2.marker){
+    else if(gameBoard[0,1,2] === "o"){
         console.log(`${player2.name} wins`)
         player2.giveScore();
         winner++;
