@@ -29,12 +29,12 @@ function checktie(){
     }
 }
 function checkwinner(){
-    if (gameBoard[0,1,2] === "x"){
+    if (gameBoard[0,1,2] === player1.marker){
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[0,1,2] === "o"){
+    else if(gameBoard[0,1,2] === player2.marker){
         console.log(`${player2.name} wins`)
         player2.giveScore();
         winner++;
