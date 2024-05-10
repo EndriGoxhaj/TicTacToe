@@ -4,15 +4,13 @@ let gameBoard = ["", "", "", "", "", "", "", "", ""]
 function createUser(name){
     const getScore = ()=> score;
     const giveScore = ()=> score++;
-    const marker = prompt("choose marker");
+    const marker = "x"/*prompt("choose marker")*/;
     const play = () =>{
         let i = "";
         i = prompt("choose position");
         gameBoard[i] = marker;
-        console.log(gameBoard);
         checkwinner();
         round++
-        console.log(round);
         checktie();
     }
     let score = 0;
@@ -28,86 +26,105 @@ function checktie(){
         console.log("its a tie");
     }
 }
+
 function checkwinner(){
-    if (gameBoard[0,1,2] === player1.marker){
+    let player1combination = "" + player1.marker + player1.marker + player1.marker;
+    let player2combination = "" + player2.marker + player2.marker + player2.marker;
+
+    let combination1 = gameBoard[0] + gameBoard[1] + gameBoard[2];
+    let combination2 = gameBoard[3] + gameBoard[4] + gameBoard[5];
+    let combination3 = gameBoard[6] + gameBoard[7] + gameBoard[8];
+    let combination4 = gameBoard[0] + gameBoard[4] + gameBoard[8];
+    let combination5 = gameBoard[2] + gameBoard[4] + gameBoard[6];
+    let combination6 = gameBoard[0] + gameBoard[3] + gameBoard[6];
+    let combination7 = gameBoard[1] + gameBoard[4] + gameBoard[7];
+    let combination8 = gameBoard[2] + gameBoard[5] + gameBoard[8];
+    if (combination1 === player1combination )
+    {
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[0,1,2] === player2.marker){
-        console.log(`${player2.name} wins`)
-        player2.giveScore();
-        winner++;
-    }
-    else if(gameBoard[3,4,5] === player1.marker){
-        console.log(`${player1.name} wins`);
-        player1.giveScore();
-        winner++;
-    }
-    else if(gameBoard[3,4,5] === player2.marker){
+    else if(combination1 === player2combination){
         console.log(`${player2.name} wins`);
         player2.giveScore();
         winner++;
     }
-    else if(gameBoard[6,7,8] === player1.marker){
+    else if (combination2 === player1combination )
+    {
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[6,7,8] === player2.marker){
+    else if(combination2 === player2combination){
         console.log(`${player2.name} wins`);
         player2.giveScore();
         winner++;
     }
-    else if(gameBoard[0,4,8] === player1.marker){
+    else if (combination3 === player1combination )
+    {
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[0,4,8] === player2.marker){
+    else if(combination3 === player2combination){
         console.log(`${player2.name} wins`);
         player2.giveScore();
         winner++;
     }
-    else if(gameBoard[2,4,6] === player1.marker){
-        console.log(`${player1name} wins`);
-        player1.giveScore();
-        winner++;
-    }
-    else if(gameBoard[2,4,6] === player2.marker){
-        console.log(`${player2.name} wins`);
-        player2.giveScore();
-        winner++;
-    }
-    else if(gameBoard[0,3,6] === player1.marker){
+    else if (combination4 === player1combination )
+    {
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[0,3,6] === player2.marker){
+    else if(combination4 === player2combination){
         console.log(`${player2.name} wins`);
         player2.giveScore();
         winner++;
     }
-    else if(gameBoard[1,4,7] === player1.marker){
+    else if (combination5 === player1combination )
+    {
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[1,4,7] === player2.marker){
+    else if(combination5 === player2combination){
         console.log(`${player2.name} wins`);
         player2.giveScore();
         winner++;
     }
-    else if(gameBoard[2,5,8] === player1.marker){
+    else if (combination6 === player1combination )
+    {
         console.log(`${player1.name} wins`);
         player1.giveScore();
         winner++;
     }
-    else if(gameBoard[2,5,8] === player2.marker){
+    else if(combination6 === player2combination){
+        console.log(`${player2.name} wins`);
+        player2.giveScore();
+        winner++;
+    }
+    else if (combination7 === player1combination )
+    {
+        console.log(`${player1.name} wins`);
+        player1.giveScore();
+        winner++;
+    }
+    else if(combination7 === player2combination){
+        console.log(`${player2.name} wins`);
+        player2.giveScore();
+        winner++;
+    }
+    else if (combination8 === player1combination )
+    {
+        console.log(`${player1.name} wins`);
+        player1.giveScore();
+        winner++;
+    }
+    else if(combination8 === player2combination){
         console.log(`${player2.name} wins`);
         player2.giveScore();
         winner++;
     }
 }
-

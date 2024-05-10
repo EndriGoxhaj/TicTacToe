@@ -1,0 +1,26 @@
+body{
+}
+.wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.game{
+    height: 300px;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.cells{
+    background-color: aqua;
+    font-size: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cells:hover{
+    cursor: pointer;
+    background-color: rgb(160, 238, 238);
+}
