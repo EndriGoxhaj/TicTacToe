@@ -1,18 +1,9 @@
 const gridCell = document.querySelectorAll('.cell');
-
+let array = ["", "", "", "", "", "", "", "", ""]
 gridCell.forEach((cell) => {
     cell.addEventListener('click', ()=>{
-        for(i=0;i==9;i++){
-            const cell = document.querySelector()
-        }
-        cell.textContent = "X"
-        })
-})
-const btn = document.querySelector('.temp');
-btn.addEventListener('click', ()=>{
-    gridCell.forEach((cell) =>{
-        for(i = 0;i == 9; i++){
-            cell.setAttribute('id', i);
-        }
+        cell.textContent = "X";
+        array[cell.id] = "x"
+        console.log(array);
     })
-});
+})
