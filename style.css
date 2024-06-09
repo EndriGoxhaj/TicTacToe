@@ -1,31 +1,36 @@
 body{
-}
-.wrap{
     height: 100vh;
+    margin: 0;
+    font-family: roboto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
-.game{
-    height: 400px;
-    width: 400px;
+@font-face {
+    font-family: roboto;
+    src: url(./fonts/Roboto-Regular.ttf);
+}
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#wrapper > #container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    border: solid 1px black;
 }
-#main{
+#container > .cell{
+    border: solid 1px black;
     display: flex;
-    flex-direction: column;
-}
-.cells{
-    background-color: aqua;
-    font-size: 70px;
-    display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 150px;
+    font-size: 6em;
 }
-.cells:hover{
+.cell:hover{
     cursor: pointer;
-    background-color: rgb(160, 238, 238);
+    background-color: rgb(180, 177, 177);
 }
