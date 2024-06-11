@@ -1,20 +1,20 @@
 const gameBoard = (function (){
     let board = ["", "", "", "", "", "", "", "", ""];
 
-    let turn = 1;
-
     const player1 = {
-        name: 'Player 1',
-        marker: 'X'
+        name: "endri",
+        marker: 'X',
+        score: 0,
+        winner: false
     }
     const player2 = {
-        name: 'Player 2',
-        marker: 'O'
+        name: "devi",
+        marker: 'O',
+        score: 0,
+        winner: false
     }
-
     return {
         board,
-        turn,
         player1,
         player2
     }
@@ -22,39 +22,36 @@ const gameBoard = (function (){
 const playGame = (function (){
     const gridCell = document.querySelectorAll('.cell');
     let isWinner = false;
+    let turn = 1;
+    let turnCounter = 0;
 
     gridCell.forEach((cell) => {
         cell.addEventListener('click', ()=>{
-            if(cell.textContent == "" && isWinner === false){ // prevents user from selecting an alredy selected cell
-                if(gameBoard.turn == 1){
+            if(cell.textContent == "" && isWinner === false){ // allows selecting only empty cells and stops the game when winner is found
+                if(turn == 1){
                     cell.textContent = gameBoard.player1.marker;
-                    gameBoard.board[cell.id] = cell.textContent;
-                    gameBoard.turn = 2;
-                    console.log(gameBoard.board);
-                    for(i = 0; i < 8; i++){
-                        for(j = 0; j < 3; j++){
-                            let [a,b,c] = winCombinations[i];
-                            if(gameBoard.board[a] != "" && gameBoard.board[a] === gameBoard.board[b] && gameBoard.board[b] === gameBoard.board[c]){
-                                isWinner= true;
-                            }
-                        }
-                    }
+                    turn = 2;
                 }
-                else if(gameBoard.turn == 2){
+                else if(turn == 2){
                     cell.textContent = gameBoard.player2.marker;
+                    turn = 1;
+                }
                     gameBoard.board[cell.id] = cell.textContent;
-                    gameBoard.turn = 1;
-                    console.log(gameBoard.board);
-                    for(i = 0; i < 8; i++){
+                    for(i = 0; i < 8; i++){// checks for winning combination
                         for(j = 0; j < 3; j++){
                             let [a,b,c] = winCombinations[i];
                             if(gameBoard.board[a] != "" && gameBoard.board[a] === gameBoard.board[b] && gameBoard.board[b] === gameBoard.board[c]){
                                 isWinner = true;
+                                if(gameBoard.board[a] === 'X'){gameBoard.player1.winner = true}
+                                else gameBoard.player2.winner = true;
                             }
                         }
                     }
+                    if(gameBoard.player1.winner === true){console.log(`winner is ${gameBoard.player1.name}`)}
+                    else if(gameBoard.player2.winner === true){console.log(`winner is ${gameBoard.player2.name}`)}
+                    turnCounter++;
+                    if(turnCounter === 9 && isWinner === false) console.log("it's a tie")
                 }
-            }
             else{
                 //DO NOTHING
             }
@@ -71,20 +68,5 @@ const playGame = (function (){
         [0,4,8],
         [2,4,6]
     ];
-   
-    const btn = document.querySelector('.btn');
-    btn.addEventListener('click', ()=>{
-        for(i = 0; i < 8; i++){
-            for(j = 0; j < 3; j++){
-                let [a,b,c] = winCombinations[i];
-                if(gameBoard.board[a] != "" && gameBoard.board[a] === gameBoard.board[b] && gameBoard.board[b] === gameBoard.board[c]){
-                    console.log("winner");
-                }
-            }
-        }
-    })
-    return{
-        winCombinations,
-        winner
-    }
+    return 
 })();

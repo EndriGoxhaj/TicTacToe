@@ -5,23 +5,39 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
 }
 @font-face {
     font-family: roboto;
     src: url(./fonts/Roboto-Regular.ttf);
 }
-#wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#header{
+    font-size: 6em;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
-#wrapper > #container{
+#footer{
+margin-top: 40px;
+}
+#wrapper{
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: 1fr;
+
+}
+#wrapper > #players{
+    grid-column: 1/2;
+    background-color: aqua;
+}
+#wrapper > #gameinfo{
+    grid-column: 3/4;
+    background-color: aqua;
+}
+#wrapper > #game{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border: solid 1px black;
 }
-#container > .cell{
+#game > .cell{
     border: solid 1px black;
     display: flex;
     justify-content: center;
