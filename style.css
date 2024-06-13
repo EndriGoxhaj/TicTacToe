@@ -20,6 +20,12 @@ body{
 #footer{
 margin-top: 40px;
 }
+#announcement{
+    font-size: 3em;
+    height: 50px;
+    color: rgb(75, 75, 72);
+    font-weight: 700;
+}
 #wrapper{
     display: flex;
     flex-direction: column;
@@ -45,9 +51,10 @@ margin-top: 40px;
 #gameinfo{
     display: flex;
     justify-content: space-between;
+    gap: 50px;
 }
 #gameinfo > .playerinfo{
-    background-color: aliceblue;
+    background-color: rgb(219, 124, 124);
     height: 50px;
     width: 150px;
     margin: 5px;
@@ -55,7 +62,20 @@ margin-top: 40px;
     justify-content: center;
     align-items: center;
     border-radius: 15px;
+    font-weight: 700;
 
+}
+.reset{
+    height: 50px;
+    width: 150px;
+    font-weight: 700;
+    font-size: 1em;
+    border: none;
+    border-radius: 15px;
+    background-color: rgb(219, 124, 124);
+}
+.reset:hover{
+    cursor: pointer;
 }
 .cell:hover{
     cursor: pointer;

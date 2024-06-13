@@ -35,8 +35,6 @@ const playGame = (function (){
         turn = 1;
         turnCounter = 0;
         resetDom();
-        gameBoard.player1.score = 0;
-        gameBoard.player2.score = 0;
         }
 
     const winCombinations = [
@@ -76,12 +74,13 @@ const playGame = (function (){
                         }
                     }
                     if(gameBoard.player1.winner === true){
-                        playGame.result = `${gameBoard.player1.name} wins the round!`;
+                        playGame.result = `${gameBoard.player1.name} wins!`;
                         gameBoard.player1.score++;
                         dom.renderInfo();
+                        setTimeout(resetGame, 2000);
                     }
                     else if(gameBoard.player2.winner === true){
-                        playGame.result = `${gameBoard.player2.name} wins the round!`;
+                        playGame.result = `${gameBoard.player2.name} wins!`;
                         gameBoard.player2.score++;
                         dom.renderInfo();
                         setTimeout(resetGame, 2000);
@@ -90,6 +89,7 @@ const playGame = (function (){
                     if(turnCounter === 9 && gameBoard.player1.winner === false && gameBoard.player2.winner === false) {
                         playGame.result = "Round tied!";
                         dom.renderInfo();
+                        setTimeout(resetGame, 2000);
                     }
                 }
             else{
@@ -109,6 +109,10 @@ let xInfo = document.getElementById('xinfo');
 let oInfo = document.getElementById('oinfo');
 resetBtn.addEventListener('click', ()=>{
     playGame.resetGame();
+    gameBoard.player1.score = 0;
+    gameBoard.player2.score = 0;
+    playGame.result = "Tic-Tac-Toe";
+    renderInfo();
 })
 let renderInfo = () =>{
     announcement.textContent = playGame.result;
@@ -117,7 +121,7 @@ let renderInfo = () =>{
 
 }
 let resetDom = ()=>{
-    announcement.textContent = "";
+    announcement.textContent = "Tic-Tac-Toe";
 }
 const dom = (function(){
 
