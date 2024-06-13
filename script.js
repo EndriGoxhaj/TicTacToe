@@ -35,6 +35,8 @@ const playGame = (function (){
         turn = 1;
         turnCounter = 0;
         resetDom();
+        gameBoard.player1.score = 0;
+        gameBoard.player2.score = 0;
         }
 
     const winCombinations = [
@@ -82,6 +84,7 @@ const playGame = (function (){
                         playGame.result = `${gameBoard.player2.name} wins the round!`;
                         gameBoard.player2.score++;
                         dom.renderInfo();
+                        setTimeout(resetGame, 2000);
                     }
                     turnCounter++;
                     if(turnCounter === 9 && gameBoard.player1.winner === false && gameBoard.player2.winner === false) {
