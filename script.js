@@ -2,13 +2,13 @@ const gameBoard = (function (){
     let board = ["", "", "", "", "", "", "", "", ""];
 
     const player1 = {
-        name: "endri",
+        name: "X",
         marker: 'X',
         score: 0,
         winner: false
     }
     const player2 = {
-        name: "devi",
+        name: "O",
         marker: 'O',
         score: 0,
         winner: false
@@ -27,14 +27,15 @@ const playGame = (function (){
     let resetGame = ()=>{
         gridCell.forEach((cell)=>{
             cell.textContent = "";
-            gameBoard.board = ["", "", "", "", "", "", "", "", ""];
-            gameBoard.player1.winner = false;
-            gameBoard.player2.winner = false;
-            dom.resultInfo.textContent = "";
-            turn = 1;
-            turnCounter = 0;
+            cell.style.color = "rgb(87, 82, 82)"
         })
-    }
+        gameBoard.board = ["", "", "", "", "", "", "", "", ""];
+        gameBoard.player1.winner = false;
+        gameBoard.player2.winner = false;
+        turn = 1;
+        turnCounter = 0;
+        resetDom();
+        }
 
     const winCombinations = [
         [0,1,2],
@@ -65,23 +66,27 @@ const playGame = (function (){
                             if(gameBoard.board[a] != "" && gameBoard.board[a] === gameBoard.board[b] && gameBoard.board[b] === gameBoard.board[c]){
                                 if(gameBoard.board[a] === 'X'){gameBoard.player1.winner = true}
                                 else gameBoard.player2.winner = true;
+                                document.getElementById(a).style.color = 'rgb(227, 126, 126)';
+                                document.getElementById(b).style.color = 'rgb(227, 126, 126)';
+                                document.getElementById(c).style.color = 'rgb(227, 126, 126)';
+
                             }
                         }
                     }
                     if(gameBoard.player1.winner === true){
                         playGame.result = `${gameBoard.player1.name} wins the round!`;
                         gameBoard.player1.score++;
-                        dom.renderDom();
+                        dom.renderInfo();
                     }
                     else if(gameBoard.player2.winner === true){
                         playGame.result = `${gameBoard.player2.name} wins the round!`;
                         gameBoard.player2.score++;
-                        dom.renderDom();
+                        dom.renderInfo();
                     }
                     turnCounter++;
                     if(turnCounter === 9 && gameBoard.player1.winner === false && gameBoard.player2.winner === false) {
-                        playGame.result = "Round tied!"
-                        dom.renderDom();
+                        playGame.result = "Round tied!";
+                        dom.renderInfo();
                     }
                 }
             else{
@@ -95,18 +100,25 @@ const playGame = (function (){
         resetGame
     }
 })();
-let btn = document.querySelector('.hello');
-btn.addEventListener('click', ()=>{
+let resetBtn = document.querySelector('.reset');
+let announcement = document.getElementById('announcement');
+let xInfo = document.getElementById('xinfo');
+let oInfo = document.getElementById('oinfo');
+resetBtn.addEventListener('click', ()=>{
     playGame.resetGame();
 })
+let renderInfo = () =>{
+    announcement.textContent = playGame.result;
+    xInfo.textContent = `Player X score : ${gameBoard.player1.score}`;
+    oInfo.textContent = `Player O score : ${gameBoard.player2.score}`;
+
+}
+let resetDom = ()=>{
+    announcement.textContent = "";
+}
 const dom = (function(){
-    let resultInfo = document.getElementById("result");
-    let renderDom = ()=>{
-        resultInfo.textContent = playGame.result;
-    }
 
     return{
-        resultInfo,
-        renderDom
+        renderInfo
     }
 })();

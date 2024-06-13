@@ -5,48 +5,58 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-color: rgb(119, 140, 140);
+    gap: 20px;
 }
 @font-face {
     font-family: roboto;
     src: url(./fonts/Roboto-Regular.ttf);
 }
-#header{
-    font-size: 6em;
-    margin-top: 20px;
-    margin-bottom: 40px;
+@font-face {
+    font-family: Varela;
+    src: url(./fonts/VarelaRound-Regular.ttf);
 }
 #footer{
 margin-top: 40px;
 }
 #wrapper{
-    display: grid;
-    grid-template-columns: 300px 1fr 300px;
-    grid-template-rows: 1fr;
-
-}
-#wrapper > #players{
-    grid-column: 1/2;
-    background-color: aqua;
-}
-#wrapper > #gameinfo{
-    grid-column: 3/4;
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
 }
 #wrapper > #game{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    border: solid 1px black;
 }
 #game > .cell{
-    border: solid 1px black;
+    font-family: Varela;
+    background-color: rgb(215, 213, 213);
+    color: rgb(87, 82, 82);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 150px;
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    font-size: 4.5em;
+    font-weight: 700;
+    border-radius: 15px;
+}
+#gameinfo{
+    display: flex;
+    justify-content: space-between;
+}
+#gameinfo > .playerinfo{
+    background-color: aliceblue;
+    height: 50px;
     width: 150px;
-    font-size: 6em;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+
 }
 .cell:hover{
     cursor: pointer;
-    background-color: rgb(180, 177, 177);
 }

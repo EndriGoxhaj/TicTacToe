@@ -8,11 +8,8 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <div id="header">Tic Tac Toe</div>
+    <div id="announcement"></div>
     <div id="wrapper">
-        <div id="players">
-            <input type="text" name="" id="">
-        </div>
         <div id="game">
             <div id="0" class="cell"></div>
             <div id="1" class="cell"></div>
@@ -24,11 +21,14 @@
             <div id="7" class="cell"></div>
             <div id="8" class="cell"></div>
         </div>
-        <div id="gameinfo">
-            <div id="result"></div>
-        </div>
     </div>
-    <button class="hello">hello</button>
+    <div id="gameinfo">
+        <div id="xinfo" class="playerinfo">Player X score :</div>
+        <div id="oinfo" class="playerinfo">Player O score :</div>
+    </div>
+    <button class="reset">
+        RESET GAME
+    </button>
     <div id="footer">Copyright © 2024 EndriGoxhaj</div>
 </body>
 </html>
